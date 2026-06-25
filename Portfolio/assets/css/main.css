@@ -685,14 +685,16 @@ section,
 /*--------------------------------------------------------------
 # Skills Section
 --------------------------------------------------------------*/
-.skills .progress {
+.skills .progress,
+.soft-skills .progress {
   height: 60px;
   display: block;
   background: none;
   border-radius: 0;
 }
 
-.skills .progress .skill {
+.skills .progress .skill,
+.soft-skills .progress .skill {
   color: var(--heading-color);
   padding: 0;
   margin: 0 0 6px 0;
@@ -702,17 +704,20 @@ section,
   font-family: var(--heading-font);
 }
 
-.skills .progress .skill .val {
+.skills .progress .skill .val,
+.soft-skills .progress .skill .val {
   float: right;
   font-style: normal;
 }
 
-.skills .progress-bar-wrap {
+.skills .progress-bar-wrap,
+.soft-skills .progress-bar-wrap {
   background: color-mix(in srgb, var(--default-color), transparent 90%);
   height: 10px;
 }
 
-.skills .progress-bar {
+.skills .progress-bar,
+.soft-skills .progress-bar {
   width: 1px;
   height: 10px;
   transition: 0.9s;
@@ -889,6 +894,22 @@ section,
 
 .portfolio .portfolio-content:hover img {
   transform: scale(1.1);
+}
+
+.portfolio-pagination {
+  text-align: center;
+}
+
+.portfolio-pagination .portfolio-page-btn {
+  min-width: 42px;
+  min-height: 42px;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.35rem;
+  transition: transform 0.2s ease;
+}
+
+.portfolio-pagination .portfolio-page-btn:hover {
+  transform: translateY(-1px);
 }
 
 /*--------------------------------------------------------------
@@ -1266,6 +1287,52 @@ section,
   font-size: 20px;
   margin-right: 8px;
   color: var(--accent-color);
+}
+
+/*--------------------------------------------------------------
+# Pagination Controls
+--------------------------------------------------------------*/
+.pagination-controls {
+  margin-top: 30px;
+  padding: 20px 0;
+}
+
+.pagination-btn {
+  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 8px 12px;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(20, 157, 221, 0.3);
+}
+
+.pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination-btn.btn-primary {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+.pagination-btn.btn-primary:hover {
+  background-color: #0d7ec4;
+  border-color: #0d7ec4;
+}
+
+.pagination-btn.btn-outline-primary {
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.pagination-btn.btn-outline-primary:hover:not(:disabled) {
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
 }
 
 /*--------------------------------------------------------------

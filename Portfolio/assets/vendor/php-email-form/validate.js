@@ -55,20 +55,23 @@
       body: formData,
       headers: {'X-Requested-With': 'XMLHttpRequest'}
     })
-    .then(response => {
-      if( response.ok ) {
-        return response.text();
-      } else {
-        throw new Error(`${response.status} ${response.statusText} ${response.url}`); 
-      }
-    })
-    .then(data => {
+    .then(response => response.text().then(text => ({
+      ok: response.ok,
+      status: response.status,
+      statusText: response.statusText,
+      url: response.url,
+      text
+    })))
+    .then(result => {
       thisForm.querySelector('.loading').classList.remove('d-block');
-      if (data.trim() == 'OK') {
+      if (result.ok && result.text.trim() == 'OK') {
         thisForm.querySelector('.sent-message').classList.add('d-block');
-        thisForm.reset(); 
+        thisForm.reset();
       } else {
-        throw new Error(data ? data : 'Form submission failed and no error message returned from: ' + action); 
+        const errorMessage = result.text
+          ? result.text
+          : `${result.status} ${result.statusText} ${result.url}`;
+        throw new Error(errorMessage);
       }
     })
     .catch((error) => {
